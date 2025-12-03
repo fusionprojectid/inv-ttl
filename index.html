@@ -6,10 +6,9 @@
   <title>Invoice – Tritunggal Lancar</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <link rel="stylesheet" href="style.css">
 
-  </head>
+</head>
 <body>
   <div class="app">
     <div id="sheet" class="sheet">
@@ -41,7 +40,13 @@
 
       <table id="items">
         <thead>
-          <tr><th class="col-no">No</th><th class="col-desc">Deskripsi Barang</th><th class="col-price">Harga</th><th class="col-qty">Qty</th><th class="col-sub">Subtotal</th></tr>
+          <tr>
+            <th class="col-no">No</th>
+            <th class="col-desc">Deskripsi Barang</th>
+            <th class="col-price">Harga</th>
+            <th class="col-qty">Qty</th>
+            <th class="col-sub">Subtotal</th>
+          </tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -78,9 +83,17 @@
     </div>
 
     <div class="export-btn">
+      <button id="addItemBtn">Tambah Item</button>
       <button id="printBtn">Print</button>
-      </div>
+      <button id="exportPDF">Download PDF</button>
+    </div>
   </div>
+
+  <!-- Tambahan penting agar tombol Download PDF berfungsi -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+          integrity="sha512-YcsIPG0qKR1d1NVr7DiIP9N6byN1Nsx3Rp3XIan+FJxuxMxDPZWS9Vyuk3F7S3w7Dnk3a1JpN96CB2A+Fi7RjA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
 
   <script src="script.js"></script>
 </body>
