@@ -1,100 +1,190 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invoice – Tritunggal Lancar</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Invoice – Tritunggal Lancar</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-  <div class="app">
-    <div id="sheet" class="sheet">
-      <header class="header">
-        <div class="brand">
-          <img src="TTL logo.png" alt="Logo Tri Tunggal Lancar">
-          <div class="company-block">
-            <div class="company-info">
-              <i class="fa-solid fa-location-dot"></i>Jl. Simpang Anggodo, Lowoksuruh, RT05/RW09 No. 38,<br>
-              Pakis, Kab. Malang (65154)
-            </div>
-            <div class="contact-row">
-              <div><i class="fa-solid fa-envelope"></i>kustomofamily@gmail.com</div>
-              <div><i class="fa-brands fa-whatsapp"></i>+6281 333 418 777</div>
-              <div><i class="fa-brands fa-instagram"></i>@ttl_workshop</div>
-            </div>
-          </div>
-        </div>
-        <div class="title-area">INVOICE</div>
-      </header>
 
-      <section class="meta">
-        <div class="meta-row"><div class="label">Invoice No.</div><div class="value" contenteditable id="metaNo">INV-001</div></div>
-        <div class="meta-row"><div class="label">Tanggal</div><div class="value" contenteditable id="metaDate">2025-01-01</div></div>
-        <div class="meta-row"><div class="label">Kepada</div><div class="value" contenteditable id="metaClient">Nama Klien</div></div>
-        <div class="meta-row"><div class="label"><i class="fa-solid fa-building"></i> Instansi</div><div class="value" contenteditable id="metaInstansi">Nama Instansi</div></div>
-        <div class="meta-row"><div class="label"><i class="fa-solid fa-location-dot"></i> Alamat</div><div class="value" contenteditable id="metaAlamatInstansi">Jl. Contoh Alamat No.123, Surabaya</div></div>
-      </section>
+<div class="app">
 
-      <table id="items">
-        <thead>
-          <tr>
-            <th class="col-no">No</th>
-            <th class="col-desc">Deskripsi Barang</th>
-            <th class="col-price">Harga</th>
-            <th class="col-qty">Qty</th>
-            <th class="col-sub">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+<div id="sheet" class="sheet">
 
-      <div class="sum-grid">
-        <div>
-          <div class="pay-info">
-            <h4>PEMBAYARAN</h4>
-            <div class="row"><div>Metode</div><div>Transfer Bank</div></div>
-            <div class="row"><div>Nama Rekening</div><div><strong>Ardian Kustomo</strong></div></div>
-            <div class="row"><div>No. Rekening</div><div><strong>0190917282</strong></div></div>
-            <div class="row"><div>Bank</div><div><strong>Bank BCA</strong></div></div>
-          </div>
-        </div>
+<!-- HEADER -->
+<header class="header">
 
-        <div>
-          <div class="totals">
-            <div class="line"><div>Subtotal</div><div id="sumSubtotal">Rp0</div></div>
-            <div class="line"><div>DP</div><div contenteditable id="sumDP">Rp0</div></div>
-            <hr>
-            <div class="grand line"><div>Total Tagihan</div><div id="sumGrand">Rp0</div></div>
-            <hr>
-          </div>
+<div class="logo-area">
+<img src="TTL logo.png" alt="Logo Tritunggal Lancar">
+</div>
 
-          <div class="signature">
-            <div class="sig-box">
-              <div class="sig-pad"><img src="ttd dian.png" alt="Tanda Tangan"></div>
-              <div><strong>Ardian Kustomo</strong></div>
-              <div class="role">Marketing Executive</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="company-area">
 
-    <div class="export-btn">
-      <button id="addItemBtn">Tambah Item</button>
-      <button id="printBtn">Print</button>
-      <button id="exportPDF">Download PDF</button>
-    </div>
-  </div>
+<h2 class="company-name">TRITUNGGAL LANCAR ADVERTISING</h2>
 
-  <!-- Tambahan penting agar tombol Download PDF berfungsi -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-          integrity="sha512-YcsIPG0qKR1d1NVr7DiIP9N6byN1Nsx3Rp3XIan+FJxuxMxDPZWS9Vyuk3F7S3w7Dnk3a1JpN96CB2A+Fi7RjA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"></script>
+<div class="company-info">
+<i class="fa-solid fa-location-dot"></i>
+Jl. Simpang Anggodo, Lowoksuruh RT05/RW09 No.38,
+Pakis, Kab. Malang (65154)
+</div>
 
-  <script src="script.js"></script>
+<div class="contact-row">
+<div><i class="fa-solid fa-envelope"></i>kustomofamily@gmail.com</div>
+<div><i class="fa-brands fa-whatsapp"></i>+6281 333 418 777</div>
+<div><i class="fa-brands fa-instagram"></i>@ttl_workshop</div>
+</div>
+
+</div>
+
+<div class="invoice-area">
+INVOICE
+</div>
+
+</header>
+
+<!-- META -->
+<section class="meta">
+
+<div class="meta-row">
+<div class="label">Invoice No.</div>
+<div class="value" contenteditable id="metaNo">INV-001</div>
+</div>
+
+<div class="meta-row">
+<div class="label">Tanggal</div>
+<div class="value" contenteditable id="metaDate">2025-01-01</div>
+</div>
+
+<div class="meta-row">
+<div class="label">Kepada</div>
+<div class="value" contenteditable id="metaClient">Nama Klien</div>
+</div>
+
+<div class="meta-row">
+<div class="label"><i class="fa-solid fa-building"></i> Instansi</div>
+<div class="value" contenteditable id="metaInstansi">Nama Instansi</div>
+</div>
+
+<div class="meta-row">
+<div class="label"><i class="fa-solid fa-location-dot"></i> Alamat</div>
+<div class="value" contenteditable id="metaAlamatInstansi">
+Jl. Contoh Alamat No.123
+</div>
+</div>
+
+</section>
+
+<!-- TABLE -->
+<table id="items">
+
+<thead>
+<tr>
+<th class="col-no">No</th>
+<th class="col-desc">Deskripsi Barang</th>
+<th class="col-price">Harga</th>
+<th class="col-qty">Qty</th>
+<th class="col-sub">Subtotal</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<!-- TOTAL -->
+<div class="sum-grid">
+
+<div>
+
+<div class="pay-info">
+
+<h4>PEMBAYARAN</h4>
+
+<div class="row">
+<div>Metode</div>
+<div>Transfer Bank</div>
+</div>
+
+<div class="row">
+<div>Nama Rekening</div>
+<div><strong>Ardian Kustomo</strong></div>
+</div>
+
+<div class="row">
+<div>No. Rekening</div>
+<div><strong>0190917282</strong></div>
+</div>
+
+<div class="row">
+<div>Bank</div>
+<div><strong>BCA</strong></div>
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="totals">
+
+<div class="line">
+<div>Subtotal</div>
+<div id="sumSubtotal">Rp0</div>
+</div>
+
+<div class="line">
+<div>DP</div>
+<div contenteditable id="sumDP">Rp0</div>
+</div>
+
+<hr>
+
+<div class="grand line">
+<div>Total Tagihan</div>
+<div id="sumGrand">Rp0</div>
+</div>
+
+<hr>
+
+</div>
+
+<div class="signature">
+
+<div class="sig-box">
+
+<div class="sig-pad">
+<img src="ttd dian.png">
+</div>
+
+<div><strong>Ardian Kustomo</strong></div>
+<div class="role">Marketing Executive</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="export-btn">
+<button id="addItemBtn">Tambah Item</button>
+<button id="printBtn">Print</button>
+<button id="exportPDF">Download PDF</button>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

@@ -17,9 +17,70 @@ body{margin:0;font-family:"Inter",system-ui;background:#ececec;color:var(--ink);
 }
 
 header.header{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  border-bottom:3px solid var(--accent);padding-bottom:10mm;margin-bottom:8mm;
+display:grid;
+grid-template-columns:120px 1fr auto;
+align-items:center;
+
+border-bottom:3px solid var(--accent);
+
+padding-bottom:10mm;
+margin-bottom:8mm;
+
+column-gap:20px;
 }
+
+.logo-area img{
+width:110px;
+height:auto;
+}
+
+.company-area{
+text-align:center;
+}
+
+.company-name{
+margin:0;
+font-size:20px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.company-info{
+margin-top:6px;
+font-size:13px;
+}
+
+.company-info i{
+color:var(--accent-deep);
+margin-right:6px;
+}
+
+.contact-row{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:6px;
+font-size:13px;
+flex-wrap:wrap;
+}
+
+.contact-row div{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.contact-row i{
+color:var(--accent-deep);
+}
+
+.invoice-area{
+font-size:30px;
+font-weight:800;
+color:var(--accent-deep);
+text-align:right;
+}
+
 header .brand{display:flex;align-items:flex-start;gap:14px;}
 header .brand img{width:120px;height:auto;}
 header .company-block{font-size:13px;line-height:1.5;color:var(--ink);font-weight:500;display:flex;flex-direction:column;}
