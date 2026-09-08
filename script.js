@@ -148,6 +148,14 @@ document.getElementById('printBtn').addEventListener('click',()=>{
   window.print();
 });
 
+function getInvoiceFilename(date, clientName) {
+  const stamp = [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'),
+    String(date.getDate()).padStart(2, '0')].join('-');
+  const client = clientName.trim().replace(/[<>:"/\\|?*\u0000-\u001f]/g, '')
+    .replace(/\s+/g, ' ').replace(/[. ]+$/g, '').slice(0, 100).trim() || 'Tanpa Nama Klien';
+  return `Invoice-${stamp}-${client}.pdf`;
+}
+
 // Tombol Export PDF
 document.getElementById('exportPDF').addEventListener('click',async (event)=>{
   if (typeof html2pdf !== 'function') {
@@ -166,7 +174,7 @@ document.getElementById('exportPDF').addEventListener('click',async (event)=>{
 
   const opt={
     margin:0,
-    filename:'Invoice-Tritunggal-Lancar.pdf',
+    filename:getInvoiceFilename(new Date(), document.getElementById('metaClient').textContent),
     image:{type:'jpeg',quality:1},
     html2canvas:{
       useCORS:true, scrollY:0, scrollX:0, scale:2, backgroundColor:'#ffffff',

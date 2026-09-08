@@ -16,7 +16,7 @@ Website: [Invoice Tritunggal Lancar](https://fusionprojectid.github.io/inv-ttl/)
 - Menampilkan informasi pembayaran, logo, serta tanda tangan Ardian Kustomo dengan nama dan garis di bawahnya.
 - Pilihan **Tampilkan tanda tangan dan nama** mengatur apakah gambar tanda tangan dan nama disertakan pada invoice, cetakan, dan PDF. Jika dinonaktifkan, garis dan ruang tanda tangan tetap tersedia untuk tanda tangan manual di kertas. Pilihan aktif saat halaman dibuka dan dapat dinonaktifkan di atas tombol tindakan.
 - Mencetak invoice melalui tombol **Print**.
-- Mengunduh invoice menggunakan tombol **Download PDF**, dengan nama berkas `Invoice-Tritunggal-Lancar.pdf`.
+- Mengunduh invoice menggunakan tombol **Download PDF**, dengan nama berkas `Invoice-YYYY-MM-DD-Nama Klien.pdf`. Tanggal mengikuti tanggal lokal saat tombol diunduh diklik, bukan tanggal invoice yang dipilih. Jika nama klien kosong, digunakan `Tanpa Nama Klien`. Karakter yang tidak valid untuk nama file dibuang.
 
 ## Struktur file
 
