@@ -3,6 +3,12 @@ const tBody = document.querySelector('#items tbody');
 const sumSubtotal = document.getElementById('sumSubtotal');
 const sumGrand = document.getElementById('sumGrand');
 const dpEditable = document.getElementById('sumDP');
+const showSignature = document.getElementById('showSignature');
+const syncSignature = () => {
+  document.getElementById('invoiceSignature').classList.toggle('manual-signature', !showSignature.checked);
+};
+showSignature.addEventListener('change', syncSignature);
+syncSignature();
 document.querySelectorAll('.client-field').forEach((field) => {
   const updatePlaceholder = () => {
     field.dataset.empty = String(field.textContent.trim() === '');

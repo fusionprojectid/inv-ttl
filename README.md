@@ -4,6 +4,8 @@ Aplikasi web sederhana untuk membuat invoice Tritunggal Lancar Advertising. Diba
 
 ## Fitur
 
+Website: [Invoice Tritunggal Lancar](https://fusionprojectid.github.io/inv-ttl/).
+
 - Membuat awalan nomor invoice otomatis dengan format `TTL-YYMMDD-`, dengan nomor order bulanan yang dapat diedit.
 - Mengisi tanggal otomatis saat halaman dibuka dan menyediakan kalender untuk memilih tanggal lain.
 - Mengedit nama klien, jabatan, instansi, dan alamat. Contoh isian tampil abu-abu, sedangkan teks yang diisi tampil hitam.
@@ -12,6 +14,7 @@ Aplikasi web sederhana untuk membuat invoice Tritunggal Lancar Advertising. Diba
 - Menambahkan baris otomatis saat deskripsi atau harga baris terakhir mulai diisi, atau melalui tombol **Tambah Item**.
 - Menghitung subtotal dan total tagihan saat halaman dibuka serta saat data item atau DP diedit.
 - Menampilkan informasi pembayaran, logo, serta tanda tangan Ardian Kustomo dengan nama dan garis di bawahnya.
+- Pilihan **Tampilkan tanda tangan dan nama** mengatur apakah gambar tanda tangan dan nama disertakan pada invoice, cetakan, dan PDF. Jika dinonaktifkan, garis dan ruang tanda tangan tetap tersedia untuk tanda tangan manual di kertas. Pilihan aktif saat halaman dibuka dan dapat dinonaktifkan di atas tombol tindakan.
 - Mencetak invoice melalui tombol **Print**.
 - Mengunduh invoice menggunakan tombol **Download PDF**, dengan nama berkas `Invoice-Tritunggal-Lancar.pdf`.
 

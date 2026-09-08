@@ -158,7 +158,7 @@ INVOICE
 
 </div>
 
-<div class="signature">
+<div class="signature" id="invoiceSignature">
 
 <div class="sig-box">
 
@@ -166,7 +166,7 @@ INVOICE
 <img src="ttd dian.png" alt="Tanda tangan Ardian Kustomo">
 </div>
 
-<div><strong>Ardian Kustomo</strong></div>
+<div class="signature-name"><strong>Ardian Kustomo</strong></div>
 
 </div>
 
@@ -179,6 +179,7 @@ INVOICE
 </div>
 
 <div class="export-btn">
+<label class="signature-option"><input type="checkbox" id="showSignature" aria-controls="invoiceSignature" checked> Tampilkan tanda tangan dan nama</label>
 <button id="addItemBtn">Tambah Item</button>
 <button id="printBtn">Print</button>
 <button id="exportPDF">Download PDF</button>
