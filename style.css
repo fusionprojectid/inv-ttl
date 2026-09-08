@@ -112,7 +112,7 @@ tbody tr:hover{background:#fff6f0;transition:.2s;}
 
 .totals{
   font-size:14px;
-  margin-bottom: 25mm;
+  margin-bottom: 0;
 }
 .totals .line{display:flex;justify-content:space-between;align-items:center;padding:6px 0;}
 .totals .line div:last-child{min-width:120px;text-align:right;}
@@ -121,14 +121,14 @@ tbody tr:hover{background:#fff6f0;transition:.2s;}
 .totals .grand div:last-child{font-weight:800;font-size:17px;text-align:right;}
 
 .signature{
-  margin-top:22mm;
+  margin-top:8mm;
   display:flex;
   justify-content:flex-end;
   text-align:center;
 }
-.signature .sig-box{width:260px;}
-.signature .sig-pad{height:64px;border-bottom:1px solid var(--line);margin-bottom:8px;display:flex;justify-content:center;align-items:center;}
-.signature .sig-pad img{height:64px;object-fit:contain;display:block;}
+.signature .sig-box{width:260px;border-bottom:1px solid var(--line);padding-bottom:8px;}
+.signature .sig-pad{height:80px;margin-bottom:8px;display:flex;justify-content:center;align-items:center;}
+.signature .sig-pad img{height:88px;object-fit:contain;display:block;transform:translateY(32px);}
 .signature .role{color:var(--muted);font-size:12.5px;}
 
 .export-btn{
