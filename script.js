@@ -170,7 +170,6 @@ document.getElementById('exportPDF').addEventListener('click',async (event)=>{
     image:{type:'jpeg',quality:1},
     html2canvas:{
       useCORS:true, scrollY:0, scrollX:0, scale:2, backgroundColor:'#ffffff',
-      windowWidth:1000,
       onclone: (doc) => {
         doc.body.style.background = '#ffffff';
         const overlay = doc.querySelector('.html2pdf__overlay');
@@ -181,7 +180,21 @@ document.getElementById('exportPDF').addEventListener('click',async (event)=>{
     pagebreak: { mode: ['css', 'legacy'] }
   };
   try {
-    await html2pdf().set(opt).from(el).save();
+    // Ukur dan tangkap salinan pada posisi yang sama. Container bawaan
+    // html2pdf berada di tengah viewport; perubahan viewport saat capture
+    // dapat menggeser hasil dan memotong sisi kiri invoice.
+    const worker = html2pdf().set(opt).from(el).toContainer();
+    await worker.get('container').then((container) => {
+      Object.assign(container.style, {
+        position: 'absolute', left: '0', top: '0', right: 'auto',
+        margin: '0', transform: 'none', backgroundColor: '#ffffff'
+      });
+      Object.assign(container.parentElement.style, {
+        left: '0', top: '0', margin: '0', padding: '0',
+        transform: 'none', backgroundColor: '#ffffff'
+      });
+    });
+    await worker.toCanvas().toPdf().save();
   } catch (error) {
     console.error('Ekspor PDF gagal:', error);
     alert('PDF gagal dibuat. Silakan coba lagi atau gunakan Print lalu Save as PDF.');
