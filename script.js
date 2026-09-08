@@ -3,6 +3,44 @@ const tBody = document.querySelector('#items tbody');
 const sumSubtotal = document.getElementById('sumSubtotal');
 const sumGrand = document.getElementById('sumGrand');
 const dpEditable = document.getElementById('sumDP');
+document.querySelectorAll('.client-field').forEach((field) => {
+  const updatePlaceholder = () => {
+    field.dataset.empty = String(field.textContent.trim() === '');
+  };
+  field.addEventListener('input', updatePlaceholder);
+  updatePlaceholder();
+});
+
+// Gunakan tanggal lokal saat invoice dibuka, dengan format YYMMDD.
+function formatInvoicePrefix(date) {
+  const year = String(date.getFullYear()).slice(-2);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `TTL-${year}${month}${day}-`;
+}
+
+const openedAt = new Date();
+document.getElementById('invoicePrefix').textContent = formatInvoicePrefix(openedAt);
+const invoiceDate = document.getElementById('metaDate');
+invoiceDate.value = [
+  openedAt.getFullYear(),
+  String(openedAt.getMonth() + 1).padStart(2, '0'),
+  String(openedAt.getDate()).padStart(2, '0')
+].join('-');
+const syncInvoiceDate = () => {
+  document.getElementById('invoiceDateText').textContent = invoiceDate.value;
+};
+syncInvoiceDate();
+invoiceDate.addEventListener('input', syncInvoiceDate);
+invoiceDate.addEventListener('change', syncInvoiceDate);
+invoiceDate.addEventListener('click', () => {
+  if (typeof invoiceDate.showPicker === 'function') {
+    try { invoiceDate.showPicker(); } catch { /* Pemilih bawaan tetap tersedia melalui ikon kalender. */ }
+  }
+});
+document.getElementById('invoiceOrder').addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') event.preventDefault();
+});
 
 function parseCurrency(t){
   if(!t) return 0;
@@ -84,20 +122,35 @@ dpEditable.addEventListener('input', calculateTotal);
 // --- Inisialisasi Data Awal ---
 makeRow('Desain & Produksi', 1500000, 1); // Item contoh
 makeRow('', 0, 1); // Baris kosong awal untuk memancing input
+calculateTotal();
 
 // Tombol Tambah Item Manual (tetap ada sebagai opsi)
 document.getElementById('addItemBtn').addEventListener('click', () => {
-  makeRow('', 0, 1);
+  const row = makeRow('', 0, 1);
+  row.querySelector('.col-desc').focus();
 });
 
 // Tombol Print
-document.getElementById('printBtn').addEventListener('click',()=>window.print());
+document.getElementById('printBtn').addEventListener('click',()=>{
+  calculateTotal();
+  window.print();
+});
 
 // Tombol Export PDF
-document.getElementById('exportPDF').addEventListener('click',()=>{
+document.getElementById('exportPDF').addEventListener('click',async (event)=>{
+  if (typeof html2pdf !== 'function') {
+    alert('Pustaka PDF belum tersedia. Periksa koneksi internet atau gunakan Print lalu Save as PDF.');
+    return;
+  }
+  calculateTotal();
+  const button = event.currentTarget;
+  const originalLabel = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Memproses PDF…';
   const el=document.getElementById('sheet');
   const originalHeight = el.style.height;
   el.style.height = 'auto';
+  el.classList.add('exporting');
 
   const opt={
     margin:[10, 10, 10, 10],
@@ -105,11 +158,17 @@ document.getElementById('exportPDF').addEventListener('click',()=>{
     image:{type:'jpeg',quality:1},
     html2canvas:{useCORS:true, scrollY:0, scrollX:0, letterRendering: true},
     jsPDF:{unit:'mm', format:'a4', orientation:'portrait'},
-    pagebreak: { mode: ['css', 'legacy'] },
-    callback: function (pdf) {
-        el.style.height = originalHeight;
-        pdf.save(opt.filename);
-    }
+    pagebreak: { mode: ['css', 'legacy'] }
   };
-  html2pdf().set(opt).from(el).toPdf().get('pdf').save();
+  try {
+    await html2pdf().set(opt).from(el).save();
+  } catch (error) {
+    console.error('Ekspor PDF gagal:', error);
+    alert('PDF gagal dibuat. Silakan coba lagi atau gunakan Print lalu Save as PDF.');
+  } finally {
+    el.style.height = originalHeight;
+    el.classList.remove('exporting');
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
 });

@@ -141,7 +141,19 @@ tbody tr:hover{background:#fff6f0;transition:.2s;}
 .export-btn button:first-child{background:#6b6b6b;}
 .export-btn button:hover{opacity:0.9;}
 
+#metaDate{font:inherit;color:inherit;border:0;background:transparent;padding:0;cursor:pointer;}
+#metaDate:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.client-field{color:#000;min-height:1.4em;position:relative;}
+.client-field[data-empty="true"]::before{content:attr(data-placeholder);color:#999;pointer-events:none;position:absolute;left:0;top:0;}
+.exporting .client-field::before{content:none;}
+.date-output{display:none;}
+.exporting #metaDate{display:none;}
+.exporting .date-output{display:inline;}
+
 @media print{
+  .client-field::before{content:none;}
+  #metaDate{display:none;}
+  .date-output{display:inline;}
   body{background:#fff;}
   .app{padding:0;margin:0;}
   .sheet{box-shadow:none;margin:0;height:auto;overflow:visible;}

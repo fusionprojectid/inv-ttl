@@ -53,29 +53,32 @@ INVOICE
 
 <div class="meta-row">
 <div class="label">Invoice No.</div>
-<div class="value" contenteditable id="metaNo">INV-001</div>
+<div class="value" id="metaNo"><span id="invoicePrefix">TTL-</span><span id="invoiceOrder" contenteditable="plaintext-only" role="textbox" aria-label="Nomor order bulan ini" spellcheck="false">001</span></div>
 </div>
 
 <div class="meta-row">
 <div class="label">Tanggal</div>
-<div class="value" contenteditable id="metaDate">2025-01-01</div>
+<div class="value"><input type="date" id="metaDate" aria-label="Tanggal invoice"><span id="invoiceDateText" class="date-output"></span></div>
 </div>
 
 <div class="meta-row">
 <div class="label">Kepada</div>
-<div class="value" contenteditable id="metaClient">Nama Klien</div>
+<div class="value client-field" contenteditable="plaintext-only" id="metaClient" role="textbox" aria-label="Nama Klien" data-placeholder="Nama Klien" data-empty="true"></div>
+</div>
+
+<div class="meta-row">
+<div class="label">Jabatan</div>
+<div class="value client-field" contenteditable="plaintext-only" id="metaJabatan" role="textbox" aria-label="Jabatan Klien" data-placeholder="Jabatan Klien" data-empty="true"></div>
 </div>
 
 <div class="meta-row">
 <div class="label"><i class="fa-solid fa-building"></i> Instansi</div>
-<div class="value" contenteditable id="metaInstansi">Nama Instansi</div>
+<div class="value client-field" contenteditable="plaintext-only" id="metaInstansi" role="textbox" aria-label="Nama Instansi" data-placeholder="Nama Instansi" data-empty="true"></div>
 </div>
 
 <div class="meta-row">
 <div class="label"><i class="fa-solid fa-location-dot"></i> Alamat</div>
-<div class="value" contenteditable id="metaAlamatInstansi">
-Jl. Contoh Alamat No.123
-</div>
+<div class="value client-field" contenteditable="plaintext-only" id="metaAlamatInstansi" role="textbox" aria-label="Alamat Klien" data-placeholder="Jl. Contoh Alamat No. 123" data-empty="true"></div>
 </div>
 
 </section>
