@@ -5,7 +5,13 @@ const sumGrand = document.getElementById('sumGrand');
 const dpEditable = document.getElementById('sumDP');
 const showSignature = document.getElementById('showSignature');
 const syncSignature = () => {
-  document.getElementById('invoiceSignature').classList.toggle('manual-signature', !showSignature.checked);
+  const signature = document.getElementById('invoiceSignature');
+  if (!signature) return;
+  signature.hidden = false;
+  signature.classList.toggle('manual-signature', !showSignature.checked);
+  signature.querySelectorAll('.sig-pad img, .signature-name').forEach((element) => {
+    element.style.visibility = showSignature.checked ? 'visible' : 'hidden';
+  });
 };
 showSignature.addEventListener('change', syncSignature);
 syncSignature();
@@ -159,10 +165,18 @@ document.getElementById('exportPDF').addEventListener('click',async (event)=>{
   el.classList.add('exporting');
 
   const opt={
-    margin:[10, 10, 10, 10],
+    margin:0,
     filename:'Invoice-Tritunggal-Lancar.pdf',
     image:{type:'jpeg',quality:1},
-    html2canvas:{useCORS:true, scrollY:0, scrollX:0, letterRendering: true},
+    html2canvas:{
+      useCORS:true, scrollY:0, scrollX:0, scale:2, backgroundColor:'#ffffff',
+      windowWidth:1000,
+      onclone: (doc) => {
+        doc.body.style.background = '#ffffff';
+        const overlay = doc.querySelector('.html2pdf__overlay');
+        if (overlay) overlay.style.background = '#ffffff';
+      }
+    },
     jsPDF:{unit:'mm', format:'a4', orientation:'portrait'},
     pagebreak: { mode: ['css', 'legacy'] }
   };

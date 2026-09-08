@@ -86,11 +86,13 @@ Harga dan DP diproses sebagai rupiah bulat. Sebaiknya masukkan angka tanpa pecah
 
 ## Keterbatasan saat ini
 
+Saat memperbarui GitHub Pages, unggah `index.html`, `style.css`, dan `script.js` bersama-sama. Referensi CSS dan JavaScript di HTML menggunakan parameter versi; perbarui nilainya saat merilis perubahan agar browser mengambil file terbaru. Jika halaman masih menampilkan perilaku lama, lakukan muat ulang paksa (`Ctrl+Shift+R`).
+
 - Data hanya berada di halaman yang sedang dibuka. Memuat ulang atau menutup halaman menghapus perubahan; belum ada penyimpanan maupun riwayat invoice.
 - Setiap halaman dimuat ulang, tanggal kembali mengikuti tanggal perangkat dan nomor order kembali ke `001`.
 - Belum tersedia tombol hapus baris. Isi baris dapat dikosongkan, tetapi barisnya tetap tampil.
 - Validasi angka belum lengkap. Kuantitas desimal dipotong menjadi bilangan bulat dan nilai negatif belum ditolak.
-- Tata letak menggunakan ukuran tetap dengan padding tambahan sehingga ukuran luarnya melebihi A4. Konten panjang dapat terpotong pada tampilan halaman, dan hasil cetak atau PDF perlu diperiksa.
+- Tata letak menggunakan lebar A4 (210 mm termasuk padding 15 mm). Ekspor menggunakan latar putih tanpa bayangan dan tanpa margin PDF tambahan. Untuk invoice panjang, periksa pemisahan halaman pada hasil cetak atau PDF.
 - Tampilan belum dioptimalkan untuk layar ponsel.
 - Ekspor PDF bergantung pada CDN. Tombol dinonaktifkan selama pemrosesan dan pesan ditampilkan bila pustaka tidak tersedia atau proses gagal. Jika unduhan gagal, coba tombol **Print** lalu pilih **Save as PDF** pada browser yang mendukungnya. Dukungan unduhan dan dialog cetak dapat berbeda pada browser yang tertanam dalam aplikasi.
 
